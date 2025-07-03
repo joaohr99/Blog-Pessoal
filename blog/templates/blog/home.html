@@ -1,17 +1,19 @@
 {# blog/templates/blog/home.html #}
-{% extends 'blog/base.html' %} {# Diz que este template estende o base.html #}
+{% extends 'blog/base.html' %} {# Indica que este template herda de base.html #}
+{% load static %}
 
-{% block title %}Home{% endblock %} {# Define o título para esta página #}
+{% block title %}Home{% endblock %} {# Define o título para a aba do navegador #}
 
-{% block content %} {# Todo o conteúdo desta página vai dentro do block content #}
-    <h1 class="my-4 text-center">Posts Recentes</h1> {# O texto que você queria mudar! #}
+{% block content %} {# Abre o bloco de conteúdo principal #}
+    <h1 class="my-4 text-center">Experiências no Mercado</h1> {# Título principal da página #}
 
-    {% for post in posts %}
-        <article class="card mb-4">
+    {% for post in posts %} {# Loop para exibir cada post #}
+        <article class="card mb-4"> {# Estilo de card do Bootstrap para cada post #}
             <div class="card-body">
                 <h2 class="card-title">{{ post.title }}</h2>
                 <p class="card-subtitle mb-2 text-muted">Por {{ post.author.username }} em {{ post.date_posted|date:"F d, Y" }}</p>
                 <p class="card-text">{{ post.content }}</p>
-            </article>
-        {% endfor %}
-{% endblock content %}
+            </div>
+        </article>
+    {% endfor %}
+{% endblock content %} {# Fecha o bloco de conteúdo principal #}

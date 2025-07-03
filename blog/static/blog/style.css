@@ -2,77 +2,102 @@
 
 /* Definição de variáveis CSS com cores do tema Ayu */
 :root {
-    --ayu-background: #0A0E14; /* Fundo principal escuro */
-    --ayu-blue-dark: #1F2430;  /* Azul mais escuro para cards/elementos */
-    --ayu-blue-medium: #546E7A; /* Azul médio para texto secundário */
-    --ayu-yellow: #FFB454;     /* Amarelo de destaque */
-    --ayu-text-light: #C5C1B9; /* Cor de texto mais clara */
-    --ayu-text-dark: #787F86;  /* Cor de texto mais escura */
-    --ayu-border: #2D333F;     /* Cor para bordas */
+    --ayu-background: #0A0E14;     /* Fundo principal escuro, quase preto */
+    --ayu-blue-dark: #1F2430;      /* Azul muito escuro para elementos como cards e navbar */
+    --ayu-blue-medium: #546E7A;    /* Azul acinzentado, para texto secundário e detalhes */
+    --ayu-yellow: #FFB454;         /* Amarelo vibrante, para destaques e títulos */
+    --ayu-text-light: #C5C1B9;     /* Cor de texto clara para o conteúdo principal */
+    --ayu-text-dark: #787F86;      /* Cor de texto escura para subtítulos e informações menores */
+    --ayu-border: #2D333F;         /* Cor para bordas, um cinza azulado escuro */
 }
 
-/* Estilos gerais */
+/* Estilos Globais para o Corpo da Página */
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: var(--ayu-background); /* Usando a variável de fundo */
-    color: var(--ayu-text-light); /* Usando a variável de texto principal */
-    margin: 0; /* Remover margem padrão para a navbar ir até a borda */
+    font-family: 'Arial', sans-serif; /* Fonte padrão, pode ser ajustada */
+    line-height: 1.6;                 /* Espaçamento entre linhas */
+    background-color: var(--ayu-background); /* Fundo principal escuro */
+    color: var(--ayu-text-light);    /* Cor do texto principal */
+    margin: 0;                        /* Remove margens padrão do corpo */
+    padding-bottom: 50px;             /* Espaço para o rodapé, se houver */
 }
 
-/* Estilos da Navbar do Bootstrap (sobrescrevendo seções específicas) */
+/* Estilização da Navbar (Barra de Navegação) */
 .navbar {
-    background-color: var(--ayu-blue-dark) !important; /* Fundo da navbar */
-    border-bottom: 1px solid var(--ayu-border);
+    background-color: var(--ayu-blue-dark) !important; /* Fundo escuro da navbar */
+    border-bottom: 1px solid var(--ayu-border);        /* Borda sutil na parte inferior */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);          /* Sombra para profundidade */
 }
 
 .navbar-brand,
 .navbar-nav .nav-link {
-    color: var(--ayu-text-light) !important; /* Cor do texto e marca */
+    color: var(--ayu-text-light) !important; /* Cor do texto da marca e dos links */
+    transition: color 0.3s ease;             /* Transição suave de cor ao passar o mouse */
 }
 
-.navbar-nav .nav-link:hover,
+.navbar-brand:hover,
+.navbar-nav .nav-link:hover {
+    color: var(--ayu-yellow) !important;    /* Cor amarela ao passar o mouse */
+}
+
 .navbar-nav .nav-link.active {
-    color: var(--ayu-yellow) !important; /* Cor ao passar o mouse ou ativo */
+    color: var(--ayu-yellow) !important;    /* Cor amarela para o link ativo */
+    font-weight: bold;                     /* Deixa o link ativo em negrito */
 }
 
 .navbar-toggler-icon {
-    filter: invert(1); /* Para que o ícone do hamburguer fique visível em fundo escuro */
+    filter: invert(1); /* Inverte as cores do ícone de hambúrguer para que ele seja visível em fundo escuro */
 }
 
+/* Estilos para Títulos (h1, h2, etc.) */
 h1, h2, h3, h4, h5, h6 {
-    color: var(--ayu-yellow); /* Títulos em amarelo */
-    text-align: center;
-    padding-bottom: 10px;
+    color: var(--ayu-yellow); /* Títulos em amarelo para destaque */
+    text-align: center;      /* Centraliza os títulos */
+    padding-bottom: 10px;    /* Espaçamento abaixo dos títulos */
 }
 
-/* Estilos para os artigos do blog (Cards) */
-article.card {
-    background-color: var(--ayu-blue-dark); /* Fundo do card */
-    border: 1px solid var(--ayu-border); /* Borda do card */
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra mais escura */
-}
-
-article.card .card-title {
-    color: var(--ayu-yellow); /* Título do post no card */
-    margin-top: 0;
-}
-
-article.card .card-subtitle { /* Para a linha de autor e data */
-    font-size: 0.85em;
-    color: var(--ayu-text-dark); /* Cor de texto mais escura para subtítulo */
-    margin-bottom: 10px;
-}
-
-article.card .card-text {
-    color: var(--ayu-text-light); /* Texto principal do post */
-}
-
-/* Estilo para o container principal */
+/* Estilos para Containers Principais */
 .container {
-    padding-top: 20px; /* Para dar espaço da navbar */
-    padding-bottom: 20px;
+    padding-top: 20px;       /* Espaçamento superior para o conteúdo principal */
+    padding-bottom: 20px;    /* Espaçamento inferior */
+}
+
+/* Estilização dos Cards (usados para posts, formulários, etc.) */
+.card {
+    background-color: var(--ayu-blue-dark); /* Fundo do card mais escuro */
+    border: 1px solid var(--ayu-border);     /* Borda sutil do card */
+    border-radius: 8px;                      /* Cantos arredondados */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra mais pronunciada */
+}
+
+.card-title {
+    color: var(--ayu-yellow);             /* Título dentro do card em amarelo */
+}
+
+.card-subtitle {
+    color: var(--ayu-text-dark) !important; /* Subtítulos (como autor e data) em cinza escuro */
+    font-size: 0.85em;                     /* Tamanho da fonte menor */
+}
+
+.card-text {
+    color: var(--ayu-text-light);         /* Texto principal dentro do card em cinza claro */
+}
+
+/* Estilos específicos para mensagens (alerts do Django) */
+.alert {
+    margin-top: 15px; /* Espaçamento acima das mensagens */
+}
+.alert-success {
+    background-color: rgba(144, 238, 144, 0.2); /* Verde claro transparente */
+    color: #90ee90; /* Cor do texto verde claro */
+    border-color: #90ee90;
+}
+.alert-danger {
+    background-color: rgba(255, 99, 71, 0.2); /* Vermelho coral transparente */
+    color: #ff6347; /* Cor do texto vermelho coral */
+    border-color: #ff6347;
+}
+.alert-info {
+    background-color: rgba(135, 206, 235, 0.2); /* Azul claro transparente */
+    color: #87ceeb; /* Cor do texto azul claro */
+    border-color: #87ceeb;
 }

@@ -1,11 +1,72 @@
 {# blog/templates/blog/about.html #}
 {% extends 'blog/base.html' %}
+{% load static %}
 
-{% block title %}{{ title }}{% endblock %} {# Usa o título passado pela view #}
+{% block title %}Sobre{% endblock %} {# Define o título para a aba do navegador #}
 
 {% block content %}
-    <h1 class="my-4 text-center">Sobre o Blog</h1>
-    <p>Bem-vindo ao meu blog pessoal! Este espaço é dedicado a compartilhar meus pensamentos, experiências e conhecimentos sobre diversos tópicos, desde tecnologia e programação até hobbies e vida cotidiana.</p>
-    <p>Espero que você encontre conteúdo interessante e útil por aqui. Fique à vontade para explorar e deixar seus comentários!</p>
-    <p>Este blog foi construído com Django e Bootstrap, como parte de um projeto de aprendizado.</p>
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+            <div class="card mt-4 p-4 shadow-sm">
+                <div class="card-body">
+                    <h1 class="card-title text-center mb-4">Sobre o Desenvolvedor</h1>
+                    
+                    <div class="text-center mb-4">
+                        {# Área para a foto do desenvolvedor #}
+                        {# Certifique-se de ter 'profile_pic.jpg' em blog/static/blog/ #}
+                        <img src="{% static 'blog/foto_perfil.png' %}" class="img-fluid rounded-circle" alt="Foto de Perfil de João Henrique" style="width: 150px; height: 150px; object-fit: cover; border: 3px solid var(--ayu-yellow);">
+                    </div>
+
+                    <p class="lead text-center mb-4">
+                        Olá! Sou João Henrique, um estudante apaixonado por tecnologia e Ciência de Dados, e também fundador deste blog.
+                        Minha ambição é transformar o vasto universo de códigos e dados em soluções práticas que
+                        impulsionem a produtividade interna e o lucro das empresas.
+                    </p>
+
+                    <hr class="my-4">
+
+                    <h3 class="text-center mb-3" style="color: var(--ayu-yellow);">Minhas Habilidades e Ferramentas</h3>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <h5 style="color: var(--ayu-text-light);">Linguagens e Frameworks</h5>
+                            <ul>
+                                <li><strong>Python:</strong> Linguagem de programação versátil, base para Data Science e desenvolvimento web.</li>
+                                <li><strong>Django:</strong> Poderoso framework web para Python, utilizado na construção deste blog.</li>
+                                <li><strong>HTML:</strong> Linguagem de marcação para estruturar o conteúdo de páginas web.</li>
+                                <li><strong>CSS:</strong> Linguagem de estilo para dar vida e design visual às páginas web.</li>
+                                <li><strong>Bootstrap:</strong> Framework CSS que acelera o desenvolvimento responsivo e a estilização de interfaces.</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <h5 style="color: var(--ayu-text-light);">Banco de Dados e Análise de Dados</h5>
+                            <ul>
+                                <li><strong>SQL:</strong> Linguagem padrão para gerenciar e manipular bancos de dados relacionais.</li>
+                                <li><strong>Pandas:</strong> Biblioteca Python fundamental para manipulação e análise de dados.</li>
+                                <li><strong>Seaborn:</strong> Biblioteca Python para visualização estatística de dados, construída sobre Matplotlib.</li>
+                                <li><strong>Streamlit:</strong> Framework Python para criar rapidamente aplicações web interativas para Data Science.</li>
+                                <li><strong>PowerBI:</strong> Ferramenta de Business Intelligence da Microsoft para visualização e análise de dados.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <h5 style="color: var(--ayu-text-light);">Versionamento e Interatividade</h5>
+                            <ul>
+                                <li><strong>Git:</strong> Sistema de controle de versão distribuído para rastrear mudanças no código.</li>
+                                <li><strong>GitHub:</strong> Plataforma para hospedagem de repositórios Git, colaboração e portfólio de código.</li>
+                                <li><strong>JQuery:</strong> Biblioteca JavaScript que simplifica a manipulação de HTML, eventos e animação.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+
+                    <p class="text-center">
+                        Para mais informações ou contato, sinta-se à vontade para navegar pelo blog
+                        ou usar os links de contato (a serem adicionados futuramente).
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock content %}

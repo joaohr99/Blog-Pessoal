@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "blog",
+    'crispy_forms',
+    'crispy_bootstrap5',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +129,12 @@ STATICFILES_DIRS = [
 ]
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Para onde o usuário será redirecionado após o login
+LOGIN_REDIRECT_URL = 'blog-home'
+LOGIN_URL = 'login'               # Nome da URL para a página de login
+# Para onde o usuário será redirecionado após o logout (Django 2.1+)
+LOGOUT_REDIRECT_URL = 'blog-home'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
