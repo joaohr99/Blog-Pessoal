@@ -1,0 +1,11 @@
+{# blog/templates/blog/about.html #}
+{% extends 'blog/base.html' %}
+
+{% block title %}{{ title }}{% endblock %} {# Usa o título passado pela view #}
+
+{% block content %}
+    <h1 class="my-4 text-center">Sobre o Blog</h1>
+    <p>Bem-vindo ao meu blog pessoal! Este espaço é dedicado a compartilhar meus pensamentos, experiências e conhecimentos sobre diversos tópicos, desde tecnologia e programação até hobbies e vida cotidiana.</p>
+    <p>Espero que você encontre conteúdo interessante e útil por aqui. Fique à vontade para explorar e deixar seus comentários!</p>
+    <p>Este blog foi construído com Django e Bootstrap, como parte de um projeto de aprendizado.</p>
+{% endblock content %}

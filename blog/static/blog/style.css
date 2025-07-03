@@ -1,42 +1,78 @@
+/* blog/static/blog/style.css */
+
+/* Definição de variáveis CSS com cores do tema Ayu */
+:root {
+    --ayu-background: #0A0E14; /* Fundo principal escuro */
+    --ayu-blue-dark: #1F2430;  /* Azul mais escuro para cards/elementos */
+    --ayu-blue-medium: #546E7A; /* Azul médio para texto secundário */
+    --ayu-yellow: #FFB454;     /* Amarelo de destaque */
+    --ayu-text-light: #C5C1B9; /* Cor de texto mais clara */
+    --ayu-text-dark: #787F86;  /* Cor de texto mais escura */
+    --ayu-border: #2D333F;     /* Cor para bordas */
+}
 
 /* Estilos gerais */
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    margin: 20px;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: var(--ayu-background); /* Usando a variável de fundo */
+    color: var(--ayu-text-light); /* Usando a variável de texto principal */
+    margin: 0; /* Remover margem padrão para a navbar ir até a borda */
 }
 
-h1 {
-    color: #0056b3;
+/* Estilos da Navbar do Bootstrap (sobrescrevendo seções específicas) */
+.navbar {
+    background-color: var(--ayu-blue-dark) !important; /* Fundo da navbar */
+    border-bottom: 1px solid var(--ayu-border);
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+    color: var(--ayu-text-light) !important; /* Cor do texto e marca */
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: var(--ayu-yellow) !important; /* Cor ao passar o mouse ou ativo */
+}
+
+.navbar-toggler-icon {
+    filter: invert(1); /* Para que o ícone do hamburguer fique visível em fundo escuro */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--ayu-yellow); /* Títulos em amarelo */
     text-align: center;
-    border-bottom: 2px solid #0056b3;
     padding-bottom: 10px;
 }
 
-/* Estilos para os artigos do blog */
-article {
-    background-color: #fff;
-    border: 1px solid #ddd;
+/* Estilos para os artigos do blog (Cards) */
+article.card {
+    background-color: var(--ayu-blue-dark); /* Fundo do card */
+    border: 1px solid var(--ayu-border); /* Borda do card */
     border-radius: 8px;
     padding: 20px;
     margin-bottom: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra mais escura */
 }
 
-article h2 {
-    color: #007bff;
+article.card .card-title {
+    color: var(--ayu-yellow); /* Título do post no card */
     margin-top: 0;
 }
 
-article p {
-    font-size: 0.95em;
-    line-height: 1.5;
+article.card .card-subtitle { /* Para a linha de autor e data */
+    font-size: 0.85em;
+    color: var(--ayu-text-dark); /* Cor de texto mais escura para subtítulo */
+    margin-bottom: 10px;
 }
 
-article p:first-of-type { /* Estilo para a linha de autor e data */
-    font-size: 0.85em;
-    color: #666;
-    margin-bottom: 10px;
+article.card .card-text {
+    color: var(--ayu-text-light); /* Texto principal do post */
+}
+
+/* Estilo para o container principal */
+.container {
+    padding-top: 20px; /* Para dar espaço da navbar */
+    padding-bottom: 20px;
 }
