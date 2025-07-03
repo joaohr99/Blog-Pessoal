@@ -13,12 +13,12 @@
 
 /* Estilos Globais para o Corpo da Página */
 body {
-    font-family: 'Arial', sans-serif; /* Fonte padrão, pode ser ajustada */
-    line-height: 1.6;                 /* Espaçamento entre linhas */
-    background-color: var(--ayu-background); /* Fundo principal escuro */
-    color: var(--ayu-text-light);    /* Cor do texto principal */
-    margin: 0;                        /* Remove margens padrão do corpo */
-    padding-bottom: 50px;             /* Espaço para o rodapé, se houver */
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: var(--ayu-background);
+    color: var(--ayu-text-light); /* <--- Esta linha é crucial para o texto padrão */
+    margin: 0;
+    padding-bottom: 50px;
 }
 
 /* Estilização da Navbar (Barra de Navegação) */
@@ -80,6 +80,19 @@ h1, h2, h3, h4, h5, h6 {
 
 .card-text {
     color: var(--ayu-text-light);         /* Texto principal dentro do card em cinza claro */
+}
+
+/* Estilos Específicos para o Conteúdo da Página 'Sobre' */
+/* Garante que parágrafos e itens de lista dentro de cards tenham a cor clara */
+.card-body p,
+.card-body ul li {
+    color: var(--ayu-text-light); /* Cor de texto para parágrafos e itens de lista */
+}
+
+/* Ajusta a cor dos títulos de habilidades que estavam em h5 */
+.card-body h5 {
+    font-weight: bold;
+    color: var(--ayu-text-light); /* Assegura que os h5 dentro do card-body fiquem claros */
 }
 
 /* Estilos específicos para mensagens (alerts do Django) */
