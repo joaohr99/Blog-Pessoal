@@ -1,19 +1,65 @@
 {# blog/templates/blog/home.html #}
-{% extends 'blog/base.html' %} {# Indica que este template herda de base.html #}
+{% extends 'blog/base.html' %}
 {% load static %}
+{% load crispy_forms_tags %} {# Para estilizar o formulário de comentário #}
 
-{% block title %}Home{% endblock %} {# Define o título para a aba do navegador #}
+{% block title %}Home{% endblock %}
 
-{% block content %} {# Abre o bloco de conteúdo principal #}
-    <h1 class="my-4 text-center">Notícias de Tecnologia</h1> {# Título principal da página #}
+{% block content %}
+    <h1 class="my-4 text-center" style="color: var(--ayu-yellow);">Posts Recentes</h1>
 
-    {% for post in posts %} {# Loop para exibir cada post #}
-        <article class="card mb-4"> {# Estilo de card do Bootstrap para cada post #}
+    {# Exibir mensagens do Django (ex: comentário adicionado, precisa logar) #}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    {% for post in posts %}
+        <article class="card mb-4">
             <div class="card-body">
-                <h2 class="card-title">{{ post.title }}</h2>
+                <h2 class="card-title mb-1" style="color: var(--ayu-yellow);">
+                    {{ post.title }} {# O título não será mais um link para uma página de detalhes #}
+                </h2>
                 <p class="card-subtitle mb-2 text-muted">Por {{ post.author.username }} em {{ post.date_posted|date:"F d, Y" }}</p>
-                <p class="card-text">{{ post.content }}</p>
+                <p class="card-text">{{ post.content|safe }}</p> {# Exibe o conteúdo completo do post aqui #}
+                
+                <hr> {# Divisor para a seção de comentários #}
+
+                <h4 class="mb-3" style="color: var(--ayu-yellow);">Comentários ({{ post.comments.count }})</h4>
+
+                <div class="comments-section mb-4">
+                    {% for comment in post.comments.all %} {# Acessa os comentários do post atual #}
+                        <div class="card bg-secondary text-white mb-2"> {# Estilo de card para comentários #}
+                            <div class="card-body py-2 px-3"> {# Padding menor para comentários #}
+                                <h6 class="card-title mb-0" style="color: var(--ayu-yellow);">{{ comment.author.username }}</h6>
+                                <small class="text-muted">{{ comment.date_posted|date:"d M, Y \à\s H:i" }}</small>
+                                <p class="card-text mt-1">{{ comment.content }}</p>
+                            </div>
+                        </div>
+                    {% empty %}
+                        <p class="text-center text-muted">Nenhum comentário ainda. Seja o primeiro a comentar!</p>
+                    {% endfor %}
+                </div>
+
+                <h5 class="mt-4 mb-3" style="color: var(--ayu-yellow);">Deixe um Comentário</h5>
+                {% if user.is_authenticated %} {# Apenas mostra o formulário se o usuário estiver logado #}
+                    <form method="POST" action="{% url 'add-comment' pk=post.pk %}"> {# Ação do formulário para a nova view #}
+                        {% csrf_token %}
+                        {{ comment_form|crispy }} {# O formulário será instanciado na view add_comment_to_post #}
+                        <div class="d-grid gap-2 mt-3">
+                            <button type="submit" class="btn btn-primary">Adicionar Comentário</button>
+                        </div>
+                    </form>
+                {% else %}
+                    <p class="text-center text-muted">
+                        <a href="{% url 'login' %}">Faça login</a> para deixar um comentário.
+                    </p>
+                {% endif %}
             </div>
         </article>
     {% endfor %}
-{% endblock content %} {# Fecha o bloco de conteúdo principal #}
+{% endblock content %}

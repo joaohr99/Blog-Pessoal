@@ -1,6 +1,7 @@
 {# blog/templates/blog/register.html #}
 {% extends 'blog/base.html' %}
-{% load crispy_forms_tags %} {# Necessário para renderizar formulários com estilo Crispy Forms #}
+{% load static %}
+{% load crispy_forms_tags %}
 
 {% block title %}Registrar{% endblock %}
 
@@ -11,14 +12,15 @@
                 <div class="card-body">
                     <h2 class="card-title text-center mb-4">Registrar</h2>
                     <form method="POST">
-                        {% csrf_token %} {# Tag de segurança fundamental para formulários POST #}
-                        {{ form|crispy }} {# Renderiza o formulário Django usando o estilo Crispy Forms #}
+                        {% csrf_token %}
+                        {{ form|crispy }}
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-primary mt-3">Registrar</button>
                         </div>
                     </form>
-                    <small class="text-muted d-block text-center mt-3">
-                        Já tem uma conta? <a href="{% url 'login' %}">Faça Login</a>
+                    {# Altere a classe 'text-muted' para 'text-light' ou 'text-white' aqui #}
+                    <small class="text-light d-block text-center mt-3">
+                        Já tem uma conta? <a href="{% url 'login' %}" class="text-info">Faça Login</a>
                     </small>
                 </div>
             </div>

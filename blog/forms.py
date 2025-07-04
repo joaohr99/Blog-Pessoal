@@ -1,11 +1,19 @@
 # blog/forms.py
 
 from django import forms
-from django.contrib.auth.forms import UserCreationForm # Importa o formulário de criação de usuário do Django
+from django.contrib.auth.forms import UserCreationForm
+from .models import Comment  # Importe o modelo Comment
+
 
 class UserRegisterForm(UserCreationForm):
-    email = forms.EmailField() # Adiciona um campo de e-mail ao formulário de registro
+    # ... (código existente) ...
+    pass
 
-    class Meta(UserCreationForm.Meta):
-        model = UserCreationForm.Meta.model
-        fields = UserCreationForm.Meta.fields + ('email',) # Inclui o campo de e-mail nos campos
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['content']
+        widgets = {
+            'content': forms.Textarea(attrs={'rows': 2, 'placeholder': 'Deixe seu comentário aqui...', 'class': 'form-control'}),
+        }

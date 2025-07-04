@@ -1,5 +1,6 @@
 {# blog/templates/blog/logout.html #}
 {% extends 'blog/base.html' %}
+{% load static %}
 
 {% block title %}Sessão Encerrada{% endblock %}
 
@@ -9,8 +10,9 @@
             <div class="card mt-4">
                 <div class="card-body text-center">
                     <h2 class="card-title mb-4">Você saiu da sua conta.</h2>
-                    <small class="text-muted">
-                        <a href="{% url 'login' %}" class="btn btn-primary">Fazer Login Novamente</a>
+                    {# Altere a classe 'text-muted' para 'text-light' ou 'text-white' aqui #}
+                    <small class="text-light">
+                        <a href="{% url 'login' %}" class="btn btn-primary mt-3">Fazer Login Novamente</a>
                     </small>
                 </div>
             </div>

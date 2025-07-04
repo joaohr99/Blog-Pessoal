@@ -114,3 +114,26 @@ h1, h2, h3, h4, h5, h6 {
     color: #87ceeb; /* Cor do texto azul claro */
     border-color: #87ceeb;
 }
+
+.alert {
+    /* Garante que o texto dentro dos alertas seja claro */
+    color: var(--ayu-text-light); 
+}
+
+.alert-success {
+    background-color: rgba(144, 238, 144, 0.2); /* Fundo verde claro transparente */
+    color: var(--ayu-yellow); /* Texto em amarelo, por exemplo */
+    border-color: #90ee90; /* Borda verde claro */
+}
+
+.alert-danger {
+    background-color: rgba(255, 99, 71, 0.2); /* Fundo vermelho transparente */
+    color: var(--ayu-yellow); /* Texto em amarelo, por exemplo */
+    border-color: #ff6347; /* Borda vermelha */
+}
+/* Adicione para info, warning, etc., se usar */
+.alert-info {
+    background-color: rgba(135, 206, 235, 0.2);
+    color: var(--ayu-yellow);
+    border-color: #87ceeb;
+}
